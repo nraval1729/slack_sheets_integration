@@ -1,3 +1,4 @@
+require('dotenv').config();
 let fs = require('fs');
 let readline = require('readline');
 let googleAuth = require('google-auth-library');
@@ -9,18 +10,18 @@ const TOKEN_PATH = TOKEN_DIR + 'sheets.googleapis.com-nodejs-quickstart.json'; /
 class Authentication {
   authenticate(){
     return new Promise((resolve, reject)=>{
-      let credentials = this.getClientSecret();
-      let authorizePromise = this.authorize(credentials);
+      // let credentials = this.getClientSecret();
+      let authorizePromise = this.authorize();
       authorizePromise.then(resolve, reject);
     });
   }
   getClientSecret(){
     return require('./credentials.json');
   }
-  authorize(credentials) {
-    var clientSecret = credentials.installed.client_secret;
-    var clientId = credentials.installed.client_id;
-    var redirectUrl = credentials.installed.redirect_uris[0];
+  authorize() {
+    var clientSecret = process.env.CLIENT_SECRET;
+    var clientId = process.env.CLIENT_ID;
+    var redirectUrl = process.env.REDIRECT_URIS[0];
     var auth = new googleAuth();
     var oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
 
