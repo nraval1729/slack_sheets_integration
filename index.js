@@ -35,14 +35,6 @@ const appendData = (auth, payload) => {
   const text = payload.event.text;
   const ts = payload.event.ts;
 
-  console.log("channel: " +channel);
-  console.log("user: " +user);
-  console.log("text: " +text);
-  console.log("ts: " +ts);
-
-
-  console.log("payload: " +[channel, user, text, ts]);
-
   sheets.spreadsheets.values.append({
     auth: auth,
     spreadsheetId: '19S9lcfhscJx4c_FA7PrVmTfV9dlaIV7Ob0NdqvmOEYY',
