@@ -16,7 +16,7 @@ app.get("/", (req, res, next) => {
 app.post("/message", (req, res, next) => {
 	const payload = req.body;
 
-	authentication.authenticate()
+	authentication.authorize()
 	.then(auth => appendData(auth, payload))
 	.catch(next(err));
 });
