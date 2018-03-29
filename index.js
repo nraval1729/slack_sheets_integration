@@ -18,7 +18,7 @@ app.post("/message", (req, res, next) => {
 	const payload = req.body;
 
 	authentication.authorize()
-	.then(auth => appendData(auth, payload))
+	.then(auth => appendData(auth, JSON.parse(payload)))
 	.catch(next(err));
 });
 
