@@ -32,6 +32,8 @@ const appendData = (auth, payload) => {
   let sheets = google.sheets('v4');
   const {channel, user, text, ts} = payload;
 
+  console.log("payload: " +[channel, user, text, ts]);
+
   sheets.spreadsheets.values.append({
     auth: auth,
     spreadsheetId: '19S9lcfhscJx4c_FA7PrVmTfV9dlaIV7Ob0NdqvmOEYY',
