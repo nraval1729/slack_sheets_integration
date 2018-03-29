@@ -7,8 +7,15 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
+let payload;
+
+app.get("/", (req, res, next) => {
+	res.send(payload);
+})
+
 app.post("/message", (req, res, next) => {
-	res.status(200).json({"challenge": req.body.challenge})
+	payload = req.body;
+	res.status(200).json({"Ok":"Received"});
 });
 
 app.listen(
