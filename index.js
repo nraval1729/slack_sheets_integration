@@ -18,7 +18,7 @@ app.post("/message", (req, res, next) => {
 	const payload = req.body;
 
 	authentication.authorize()
-	.then(auth => appendData(auth, JSON.parse(payload)))
+	.then(auth => appendData(auth, payload))
 	.catch(next(err));
 });
 
@@ -30,10 +30,10 @@ app.use((error, req, res, next) => {
 const appendData = (auth, payload) => {
 	console.log("inside appendData, payload: " +payload);
   let sheets = google.sheets('v4');
-  const channel = payload['channel'];
-  const user    = payload['user'];
-  const text = payload['text'];
-  const ts = payload['ts'];
+  const channel = payload.channel;
+  const user    = payload.user;
+  const text = payload.text;
+  const ts = payload.ts;
 
   console.log("payload: " +[channel, user, text, ts]);
 
