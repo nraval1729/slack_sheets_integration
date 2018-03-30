@@ -28,7 +28,6 @@ app.use((error, req, res, next) => {
 })
 
 const appendData = (auth, payload) => {
-	console.log("inside appendData, payload: " +JSON.stringify(payload, null,2));
   let sheets = google.sheets('v4');
   const channel = payload.event.channel;
   const user    = payload.event.user;
